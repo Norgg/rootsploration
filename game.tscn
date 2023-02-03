@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtjhwtj1ke54d"]
+
+[sub_resource type="Gradient" id="Gradient_gikrv"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1gad0"]
+gradient = SubResource("Gradient_gikrv")
+fill_from = Vector2(0.504587, 1)
+fill_to = Vector2(0.454128, 0)
+
+[sub_resource type="ImageTexture" id="ImageTexture_87oav"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Platform1" type="Sprite2D" parent="."]
+position = Vector2(359, 128)
+scale = Vector2(7.03125, 0.515625)
+texture = SubResource("GradientTexture2D_1gad0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform1"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform1/StaticBody2D"]
+visible = false
+scale = Vector2(1, 1)
+polygon = PackedVector2Array(32, 27, 31.1, 27, -32, 31, -32, -32, 32, -32)
+
+[node name="Platform2" type="Sprite2D" parent="."]
+position = Vector2(787, 260)
+scale = Vector2(8.08178, 0.445435)
+texture = SubResource("GradientTexture2D_1gad0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform2/StaticBody2D"]
+visible = false
+scale = Vector2(1, 1)
+polygon = PackedVector2Array(32, 27, 31.1, 27, -32, 31, -32, -32, 32, -32)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("ImageTexture_87oav")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="Sprite2D"]
