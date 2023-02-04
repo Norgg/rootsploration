@@ -30,6 +30,9 @@ func collided(body: Node):
 
 
 func _integrate_forces(state: PhysicsDirectBodyState2D):
+    if Input.is_action_just_pressed('respawn'):
+        teleport_to = last_checkpoint
+
     if teleport_to != Vector2.ZERO:
         print('Teleporting')
         state.transform.origin = teleport_to
@@ -42,7 +45,6 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
         move_dir.x += 1
     elif Input.is_action_pressed('left'):
         move_dir.x -= 1
-
     
     if move_dir.x != 0:
         sprite.animation = 'run'
