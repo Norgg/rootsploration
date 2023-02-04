@@ -65,9 +65,10 @@ jump={
 
 common/physics_ticks_per_second=100
 common/max_physics_steps_per_frame=20
-2d/default_gravity=2000.0
+2d/default_gravity=1500.0
 
 [rendering]
 
 renderer/rendering_method="mobile"
 environment/defaults/default_clear_color=Color(1, 1, 1, 1)
+textures/canvas_textures/default_texture_filter=0

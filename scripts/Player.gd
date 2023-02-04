@@ -2,13 +2,42 @@ extends RigidBody2D
 
 const move_acc := 3000
 const max_speed := 400
-const jump_impulse := 1000
+const jump_impulse := 800
 var grounded := 0.0
 const air_control := 0.5
 
+var respawn = false
+var start_pos: Vector2
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    pass # Replace with function body.
+    start_pos = position
+    connect('body_entered', collided)
+
+
+func collided(body: Node):
+    print('Bumped with: ', body.name)
+    if body.name.begins_with('Shroomies'):
+        respawn = true
+
+
+func _integrate_forces(state: PhysicsDirectBodyState2D):
+    if respawn:
+        state.transform.origin = start_pos
+        state.linear_velocity = Vector2()
+        state.angular_velocity = 0
+        respawn = false
+
+    var move_dir = Vector2()
+    if Input.is_action_pressed('right'):
+        move_dir.x += 1
+    elif Input.is_action_pressed('left'):
+        move_dir.x -= 1
+
+    if grounded:
+        state.linear_velocity.x = lerp(state.linear_velocity.x, move_dir.x * max_speed, 0.5)
+    else:
+        state.linear_velocity.x = lerp(state.linear_velocity.x, move_dir.x * max_speed, 0.02)
 
 
 func check_grounded():
@@ -22,37 +51,38 @@ func check_grounded():
         if result:
             grounded = 0.1
 
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 
     check_grounded()
     grounded = max(grounded - delta, 0)
 
-    var move_dir = Vector2()
-    if Input.is_action_pressed('right'):
-        move_dir.x += 1
-    elif Input.is_action_pressed('left'):
-        move_dir.x -= 1
+    # var move_dir = Vector2()
+    # if Input.is_action_pressed('right'):
+    #     move_dir.x += 1
+    # elif Input.is_action_pressed('left'):
+    #     move_dir.x -= 1
 
-    if move_dir.length() < 0.001 and grounded > 0:
-        physics_material_override.friction = 5
-        linear_damp = 1
-    else:
-        linear_damp = 0
-        physics_material_override.friction = 0
+    # if move_dir.length() < 0.001 and grounded > 0:
+    #     physics_material_override.friction = 5
+    #     linear_damp = 1
+    # else:
+    #     linear_damp = 0
+    #     physics_material_override.friction = 0
 
-    var impulse = move_dir * move_acc * delta * mass
+    # var impulse = move_dir * move_acc * delta * mass
 
-    if linear_velocity.length() > max_speed:
-        if sign(impulse.x) == sign(linear_velocity.x):
-            impulse.x = 0
-        if sign(impulse.y) == sign(linear_velocity.y):
-            impulse.y = 0
+    # if linear_velocity.length() > max_speed:
+    #     if sign(impulse.x) == sign(linear_velocity.x):
+    #         impulse.x = 0
+    #     if sign(impulse.y) == sign(linear_velocity.y):
+    #         impulse.y = 0
 
-    if !grounded:
-        impulse *= air_control
+    # if !grounded:
+    #     impulse *= air_control
 
-    apply_central_impulse(impulse)
+    # apply_central_impulse(impulse)
 
     if Input.is_action_just_pressed('jump') and grounded > 0:
         apply_central_impulse(Vector2(0, -jump_impulse * mass))
