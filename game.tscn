@@ -1,29 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtjhwtj1ke54d"]
+[gd_scene load_steps=7 format=3 uid="uid://dtjhwtj1ke54d"]
 
 [ext_resource type="Texture2D" uid="uid://fen82odamhey" path="res://images/player_holly(girl).png" id="1_v4irv"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_67we3"]
+[ext_resource type="Texture2D" uid="uid://dtf6j5tb4wk28" path="res://images/backround.png" id="3_6ngum"]
+[ext_resource type="TileSet" uid="uid://dl05s284vy5pt" path="res://tile_set.tres" id="4_myshu"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uinix"]
 friction = 0.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofw00"]
-size = Vector2(35, 77)
-
-[sub_resource type="Gradient" id="Gradient_gikrv"]
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_1gad0"]
-gradient = SubResource("Gradient_gikrv")
-fill_from = Vector2(0.504587, 1)
-fill_to = Vector2(0.454128, 0)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldtci"]
-size = Vector2(64, 64)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7h2pm"]
+radius = 20.5
+height = 77.0
 
 [node name="Node2D" type="Node2D"]
 
 [node name="PlayerHolly(girl)" type="RigidBody2D" parent="."]
-position = Vector2(210, 79)
+position = Vector2(394, 1332)
 physics_material_override = SubResource("PhysicsMaterial_uinix")
 can_sleep = false
 lock_rotation = true
@@ -36,113 +28,21 @@ texture = ExtResource("1_v4irv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHolly(girl)"]
 position = Vector2(1.5, 5.5)
-shape = SubResource("RectangleShape2D_ofw00")
+shape = SubResource("CapsuleShape2D_7h2pm")
 
 [node name="Camera2D" type="Camera2D" parent="PlayerHolly(girl)"]
 current = true
 
-[node name="BigPlatform1" type="Sprite2D" parent="."]
-position = Vector2(514, -166.873)
-scale = Vector2(37.5, 1.03522)
-texture = SubResource("GradientTexture2D_1gad0")
+[node name="Backround" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.396078)
+z_index = -100
+texture_filter = 1
+position = Vector2(366, 381)
+scale = Vector2(69.6818, 57.1364)
+texture = ExtResource("3_6ngum")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="BigPlatform1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BigPlatform1/StaticBody2D"]
-position = Vector2(-0.0711136, -1.48486)
-shape = SubResource("RectangleShape2D_ldtci")
-
-[node name="BigPlatform2" type="Sprite2D" parent="."]
-position = Vector2(3176, -166.873)
-scale = Vector2(37.5, 1.03522)
-texture = SubResource("GradientTexture2D_1gad0")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="BigPlatform2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BigPlatform2/StaticBody2D"]
-position = Vector2(-0.0711136, -1.48486)
-shape = SubResource("RectangleShape2D_ldtci")
-
-[node name="Platform1" type="Sprite2D" parent="."]
-position = Vector2(316, 183)
-scale = Vector2(7.03125, 0.515625)
-texture = SubResource("GradientTexture2D_1gad0")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Platform1"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1/StaticBody2D"]
-position = Vector2(-0.0711098, -1.48486)
-shape = SubResource("RectangleShape2D_ldtci")
-
-[node name="Platform2" type="Sprite2D" parent="."]
-position = Vector2(1060, 306)
-scale = Vector2(8.08178, 0.445435)
-texture = SubResource("GradientTexture2D_1gad0")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Platform2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2/StaticBody2D"]
-position = Vector2(-0.0711098, -1.48486)
-shape = SubResource("RectangleShape2D_ldtci")
-
-[node name="Platform3" type="Sprite2D" parent="."]
-position = Vector2(554, 406)
-scale = Vector2(8.08178, 0.445435)
-texture = SubResource("GradientTexture2D_1gad0")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Platform3"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3/StaticBody2D"]
-position = Vector2(-0.0711098, -1.48486)
-shape = SubResource("RectangleShape2D_ldtci")
-
-[node name="Platform4" type="Sprite2D" parent="."]
-position = Vector2(911, 56)
-scale = Vector2(8.08178, 0.445435)
-texture = SubResource("GradientTexture2D_1gad0")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Platform4"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4/StaticBody2D"]
-position = Vector2(-0.0711098, -1.48486)
-shape = SubResource("RectangleShape2D_ldtci")
-
-[node name="Platform6" type="Sprite2D" parent="."]
-position = Vector2(1673, 248)
-scale = Vector2(8.08178, 0.445435)
-texture = SubResource("GradientTexture2D_1gad0")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Platform6"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform6/StaticBody2D"]
-shape = SubResource("RectangleShape2D_ldtci")
-
-[node name="Platform7" type="Sprite2D" parent="."]
-position = Vector2(2337, 80)
-scale = Vector2(8.08178, 0.445435)
-texture = SubResource("GradientTexture2D_1gad0")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Platform7"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform7/StaticBody2D"]
-shape = SubResource("RectangleShape2D_ldtci")
-
-[node name="Platform8" type="Sprite2D" parent="."]
-position = Vector2(1665, -6)
-scale = Vector2(8.08178, 0.445435)
-texture = SubResource("GradientTexture2D_1gad0")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Platform8"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform8/StaticBody2D"]
-shape = SubResource("RectangleShape2D_ldtci")
-
-[node name="Platform9" type="Sprite2D" parent="."]
-position = Vector2(2247, 330)
-scale = Vector2(8.08178, 0.445435)
-texture = SubResource("GradientTexture2D_1gad0")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Platform9"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform9/StaticBody2D"]
-shape = SubResource("RectangleShape2D_ldtci")
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("4_myshu")
+cell_quadrant_size = 32
+format = 2
+layer_0/tile_data = PackedInt32Array(2949124, 3, 0, 2949125, 3, 0, 2949126, 3, 0, 2949127, 3, 0, 2949128, 3, 0, 2949129, 3, 0, 2949130, 3, 0, 2949131, 3, 0, 2949132, 3, 0, 2949133, 3, 0, 2949134, 3, 0, 2949135, 3, 0, 2949136, 3, 0, 2949137, 3, 0, 2949138, 3, 0, 2949139, 3, 0, 2949140, 3, 0, 2949141, 3, 0, 2949142, 3, 0, 2949143, 3, 0, 2949144, 3, 0, 2949145, 3, 0, 2949146, 3, 0, 2949147, 3, 0, 2949148, 3, 0, 2949149, 3, 0, 2949150, 3, 0, 3014686, 3, 0, 3014685, 3, 0, 3014684, 3, 0, 3014683, 3, 0, 3014682, 3, 0, 3014681, 3, 0, 3014680, 3, 0, 3014679, 3, 0, 3014678, 3, 0, 3014677, 3, 0, 3014676, 3, 0, 3014675, 3, 0, 3014674, 3, 0, 3014673, 3, 0, 3014672, 3, 0, 3014671, 3, 0, 3014670, 3, 0, 3014669, 3, 0, 3014668, 3, 0, 3014667, 3, 0, 3014666, 3, 0, 3014665, 3, 0, 3014664, 3, 0, 3014663, 3, 0, 3014662, 3, 0, 3014661, 3, 0, 3014660, 3, 0, 3014659, 3, 0, 2949123, 3, 0, 2949122, 3, 0, 2949121, 3, 0, 2949120, 3, 0, 3014655, 3, 0, 3014654, 3, 0, 3080190, 3, 0, 3080189, 3, 0, 3080188, 3, 0, 3080187, 3, 0, 3014651, 3, 0, 3014652, 3, 0, 3014653, 3, 0, 2883584, 3, 0, 2883585, 3, 0, 3014658, 3, 0, 3014657, 3, 0, 3014656, 3, 0, 3080191, 3, 0, 2883612, 3, 0, 2883613, 3, 0, 2883614, 3, 0, 3080195, 3, 0, 3080194, 3, 0, 3080193, 3, 0, 2949117, 3, 0, 2883581, 3, 0, 2883580, 3, 0, 2818044, 3, 0, 2752508, 3, 0, 2686972, 3, 0, 2621436, 3, 0, 2555900, 3, 0, 2555899, 3, 0, 2555898, 3, 0, 2555897, 3, 0, 2555896, 3, 0, 2621432, 3, 0, 2686968, 3, 0, 2686969, 3, 0, 2752505, 3, 0, 2752506, 3, 0, 2686970, 3, 0, 2621434, 3, 0, 2818042, 3, 0, 2818043, 3, 0, 2752507, 3, 0, 2686971, 3, 0, 2883578, 3, 0, 2949114, 3, 0, 2949115, 3, 0, 2949116, 3, 0, 2883579, 3, 0, 2621435, 3, 0, 2621433, 3, 0, 2555895, 3, 0, 2555894, 3, 0, 2555893, 3, 0, 2490357, 3, 0, 2490358, 3, 0, 2490359, 3, 0, 2490360, 3, 0, 2490361, 3, 0, 2490362, 3, 0, 2490363, 3, 0, 2555906, 3, 0, 2555907, 3, 0, 2555908, 3, 0, 2555909, 3, 0, 2555910, 3, 0, 2359303, 3, 0, 2359304, 3, 0, 2359305, 3, 0, 2359306, 3, 0, 2359307, 3, 0, 2359308, 3, 0, 2359309, 3, 0, 2359310, 3, 0, 2359311, 3, 0, -262148, 3, 0, -262147, 3, 0, -262146, 3, 0, -262145, 3, 0, -327680, 3, 0, -327679, 3, 0, -327678, 3, 0, -327677, 3, 0, -327676, 3, 0, -327675, 3, 0, -327674, 3, 0, -327673, 3, 0, -327672, 3, 0, -327671, 3, 0, -327670, 3, 0, -327669, 3, 0, -327668, 3, 0, -327667, 3, 0, -327666, 3, 0, -327665, 3, 0, -327664, 3, 0, -327663, 3, 0, -327662, 3, 0, -327661, 3, 0, -327660, 3, 0, -327659, 3, 0, -327658, 3, 0, -393194, 3, 0, -262122, 3, 0, -262123, 3, 0, -262124, 3, 0, -262125, 3, 0, -262126, 3, 0, -262127, 3, 0, -262128, 3, 0, -196592, 3, 0, -196593, 3, 0, -196594, 3, 0, -196595, 3, 0, -196596, 3, 0, -196597, 3, 0, -196598, 3, 0, -196599, 3, 0, -196600, 3, 0, -196601, 3, 0, -196602, 3, 0, -196603, 3, 0, -196604, 3, 0, -196605, 3, 0, -196606, 3, 0, -196607, 3, 0, -196608, 3, 0, -131073, 3, 0, -131074, 3, 0, -196610, 3, 0, -196611, 3, 0, -131075, 3, 0, -262143, 3, 0, -262142, 3, 0, -262141, 3, 0, -262140, 3, 0, -262139, 3, 0, -262138, 3, 0, -262137, 3, 0, -262136, 3, 0, -262135, 3, 0, -262134, 3, 0, -262133, 3, 0, -262132, 3, 0, -262131, 3, 0, -262130, 3, 0, -262129, 3, 0, -262144, 3, 0, -196609, 3, 0, 1900557, 3, 0, 1835021, 3, 0, 1835020, 3, 0, 1835019, 3, 0, 1769483, 3, 0, 1769482, 3, 0, 1769481, 3, 0, 1703947, 3, 0, 1703948, 3, 0, 1769484, 3, 0, 1769485, 3, 0, 1703949, 3, 0, 1703946, 3, 0, 1703945, 3, 0, 2097168, 3, 0, 2097169, 3, 0, 2097170, 3, 0, 2097171, 3, 0, 2097172, 3, 0, 2097173, 3, 0, 2162708, 3, 0, 2162707, 3, 0, 2162706, 3, 0, 2162705, 3, 0, 2162704, 3, 0, 2228241, 3, 0, 2228240, 3, 0, 2228242, 3, 0, 1703944, 3, 0, 2818045, 3, 0, 2949118, 3, 0, 2949119, 3, 0, 2555905, 3, 0, 2490369, 3, 0, 2490370, 3, 0, 2490371, 3, 0, 2490372, 3, 0, 2490373, 3, 0, 2490374, 3, 0, 2293767, 3, 0, 2293768, 3, 0, 2293769, 3, 0, 2293773, 3, 0, 2293774, 3, 0, 2293775, 3, 0, 2293772, 3, 0, 2293771, 3, 0, 2293770, 3, 0, 2555904, 3, 0, 1900558, 3, 0)
