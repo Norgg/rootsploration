@@ -2,7 +2,7 @@ extends RigidBody2D
 
 const move_acc := 2000
 const max_speed := 300
-const jump_impulse := 700
+const jump_impulse := 1200
 var grounded := 0.0
 const air_control := 0.5
 
@@ -55,6 +55,10 @@ func _process(delta):
     apply_central_impulse(impulse)
 
     if Input.is_action_just_pressed('jump') and grounded > 0:
-        apply_central_impulse(Vector2(0, -jump_impulse * mass))        
+        apply_central_impulse(Vector2(0, -jump_impulse * mass))
+    
+    elif Input.is_action_just_released('jump'):
+        if linear_velocity.y < 0:
+            apply_central_impulse(Vector2(0, -linear_velocity.y * mass / 2))
 
     
