@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://dtjhwtj1ke54d"]
+[gd_scene load_steps=19 format=3 uid="uid://dtjhwtj1ke54d"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_67we3"]
 [ext_resource type="Texture2D" uid="uid://dtf6j5tb4wk28" path="res://images/backround.png" id="3_6ngum"]
+[ext_resource type="Texture2D" uid="uid://de0l0h0f7400d" path="res://images/spakle.png" id="3_nkmop"]
 [ext_resource type="Texture2D" uid="uid://cul1vfo74f8rn" path="res://images/player_holly(girl)_sheet.png" id="3_p3rty"]
 [ext_resource type="TileSet" uid="uid://dl05s284vy5pt" path="res://tile_set.tres" id="4_myshu"]
 [ext_resource type="Texture2D" uid="uid://bh2muxaud76rq" path="res://images/backround1.png" id="4_rlqre"]
@@ -86,6 +87,12 @@ scale = Vector2(2.5, 2.5)
 frames = SubResource("SpriteFrames_gaoxp")
 animation = &"run"
 playing = true
+
+[node name="Star" type="Sprite2D" parent="PlayerHolly(girl)"]
+visible = false
+position = Vector2(8, -62)
+scale = Vector2(0.527344, 0.527344)
+texture = ExtResource("3_nkmop")
 
 [node name="Backround" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.580392)

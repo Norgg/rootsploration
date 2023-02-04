@@ -8,6 +8,9 @@ var grounded := 0.0
 const control_smoothing := 0.5
 const air_control := 0.02
 
+var protection := 0
+var star: Sprite2D
+
 var start_pos: Vector2
 var last_checkpoint: Vector2
 var teleport_to: Vector2
@@ -20,13 +23,23 @@ func _ready():
     last_checkpoint = start_pos
     connect('body_entered', collided)
     sprite = $AnimatedSprite2D
+    star = $Star
 
 
 func collided(body: Node):
     print('Bumped with: ', body.name)
     if body.name.begins_with('Shroomies'):
-        teleport_to = last_checkpoint
-    if body.name.begins_with('Door'):
+        if protection > 0:
+            protection -= 1
+            if protection == 0:
+                star.hide()
+        else:
+            teleport_to = last_checkpoint
+    elif body.name.begins_with('GoldShroomies'):
+        protection = 1
+        print('Showing star')
+        star.show()
+    elif body.name.begins_with('Door'):
         print('door!')
 
 
