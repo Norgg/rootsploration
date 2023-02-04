@@ -1,12 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://dtjhwtj1ke54d"]
+[gd_scene load_steps=18 format=3 uid="uid://dtjhwtj1ke54d"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_67we3"]
 [ext_resource type="Texture2D" uid="uid://dtf6j5tb4wk28" path="res://images/backround.png" id="3_6ngum"]
-[ext_resource type="Texture2D" uid="uid://cul1vfo74f8rn" path="res://images/player_holly(girl)_sheet.png" id="3_p3rty"]
+[ext_resource type="Texture2D" uid="uid://dvsw6kj3uyrfl" path="res://images/player_holly(girl)_sheet.png" id="3_p3rty"]
 [ext_resource type="TileSet" uid="uid://dl05s284vy5pt" path="res://tile_set.tres" id="4_myshu"]
-[ext_resource type="Script" path="res://scripts/Door.gd" id="6_m7beu"]
 [ext_resource type="Texture2D" uid="uid://bmcqc656vtx05" path="res://images/backround1.png" id="4_rlqre"]
 [ext_resource type="Texture2D" uid="uid://b7kx2a5plmjbr" path="res://images/door.png" id="5_r23g5"]
+[ext_resource type="Script" path="res://scripts/Door.gd" id="6_m7beu"]
 [ext_resource type="Texture2D" uid="uid://b5ssos7id88yo" path="res://images/shroomies.png" id="6_p7ia2"]
 [ext_resource type="Texture2D" uid="uid://d1uyhf1j3kceg" path="res://images/gold_shroomies.png" id="8_phy4e"]
 
@@ -63,7 +63,7 @@ radius = 21.0
 [node name="Node2D" type="Node2D"]
 
 [node name="PlayerHolly(girl)" type="RigidBody2D" parent="."]
-position = Vector2(256, 2176)
+position = Vector2(544, -512)
 physics_material_override = SubResource("PhysicsMaterial_uinix")
 max_contacts_reported = 10
 contact_monitor = true
@@ -113,6 +113,7 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_r23g5")
 offset = Vector2(-16, 0)
 script = ExtResource("6_m7beu")
+teleport_to = Vector2(1312, 4032)
 
 [node name="DoorArea" type="Area2D" parent="Door"]
 
