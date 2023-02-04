@@ -1,8 +1,8 @@
 extends RigidBody2D
 
-const move_acc := 2000
-const max_speed := 300
-const jump_impulse := 1200
+const move_acc := 3000
+const max_speed := 400
+const jump_impulse := 1000
 var grounded := 0.0
 const air_control := 0.5
 
@@ -35,7 +35,7 @@ func _process(delta):
         move_dir.x -= 1
 
     if move_dir.length() < 0.001 and grounded > 0:
-        physics_material_override.friction = 1
+        physics_material_override.friction = 5
         linear_damp = 1
     else:
         linear_damp = 0
