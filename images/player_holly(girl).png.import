@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://fen82odamhey"
-path="res://.godot/imported/player(girl).png-6b0cde5d3df5f5998ca5ce0899d39b3e.ctex"
+path="res://.godot/imported/player_holly(girl).png-ebdf89e652f501b98194951bb6af635f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/player(girl).png"
-dest_files=["res://.godot/imported/player(girl).png-6b0cde5d3df5f5998ca5ce0899d39b3e.ctex"]
+source_file="res://images/player_holly(girl).png"
+dest_files=["res://.godot/imported/player_holly(girl).png-ebdf89e652f501b98194951bb6af635f.ctex"]
 
 [params]
 

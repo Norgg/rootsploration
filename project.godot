@@ -11,12 +11,18 @@ config_version=5
 [application]
 
 config/name="rootsploration"
+run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.0", "Mobile")
 config/icon="res://icon.svg"
 
 [editor]
 
 export/convert_text_resources_to_binary=true
+
+[physics]
+
+common/physics_ticks_per_second=100
+common/max_physics_steps_per_frame=20
 
 [rendering]
 
