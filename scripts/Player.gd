@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name Player
 
 const move_acc := 3000
 const max_speed := 400
@@ -6,33 +7,51 @@ const jump_impulse := 800
 var grounded := 0.0
 const air_control := 0.5
 
-var respawn = false
 var start_pos: Vector2
+var last_checkpoint: Vector2
+var teleport_to: Vector2
+
+var sprite: AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
     start_pos = position
+    last_checkpoint = start_pos
     connect('body_entered', collided)
+    sprite = $AnimatedSprite2D
 
 
 func collided(body: Node):
     print('Bumped with: ', body.name)
     if body.name.begins_with('Shroomies'):
-        respawn = true
+        teleport_to = last_checkpoint
+    if body.name.begins_with('Door'):
+        print('door!')
 
 
 func _integrate_forces(state: PhysicsDirectBodyState2D):
-    if respawn:
-        state.transform.origin = start_pos
+    if teleport_to != Vector2.ZERO:
+        print('Teleporting')
+        state.transform.origin = teleport_to
         state.linear_velocity = Vector2()
         state.angular_velocity = 0
-        respawn = false
+        teleport_to = Vector2.ZERO
 
     var move_dir = Vector2()
     if Input.is_action_pressed('right'):
         move_dir.x += 1
     elif Input.is_action_pressed('left'):
         move_dir.x -= 1
+
+    
+    if move_dir.x != 0:
+        sprite.animation = 'run'
+        if move_dir.x > 0:
+            sprite.flip_h = false
+        else:
+            sprite.flip_h = true
+    else:
+        sprite.animation = 'default'
 
     if grounded:
         state.linear_velocity.x = lerp(state.linear_velocity.x, move_dir.x * max_speed, 0.5)

@@ -1,6 +1,11 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dl05s284vy5pt"]
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://dl05s284vy5pt"]
 
 [ext_resource type="Texture2D" uid="uid://civ537ajw8t56" path="res://images/tilemap.png" id="1_n5dbf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_iqeu6"]
+friction = 0.0
+bounce = 0.36
+absorbent = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8nlx0"]
 texture = ExtResource("1_n5dbf")
@@ -25,4 +30,5 @@ texture_region_size = Vector2i(32, 32)
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_iqeu6")
 sources/3 = SubResource("TileSetAtlasSource_8nlx0")

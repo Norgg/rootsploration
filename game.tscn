@@ -1,14 +1,59 @@
-[gd_scene load_steps=9 format=3 uid="uid://dtjhwtj1ke54d"]
+[gd_scene load_steps=16 format=3 uid="uid://dtjhwtj1ke54d"]
 
-[ext_resource type="Texture2D" uid="uid://fen82odamhey" path="res://images/player_holly(girl).png" id="1_v4irv"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_67we3"]
 [ext_resource type="Texture2D" uid="uid://dtf6j5tb4wk28" path="res://images/backround.png" id="3_6ngum"]
+[ext_resource type="Texture2D" uid="uid://cul1vfo74f8rn" path="res://images/player_holly(girl)_sheet.png" id="3_p3rty"]
 [ext_resource type="TileSet" uid="uid://dl05s284vy5pt" path="res://tile_set.tres" id="4_myshu"]
 [ext_resource type="Texture2D" uid="uid://bpn64enrqvmrr" path="res://images/door.png" id="5_r23g5"]
+[ext_resource type="Script" path="res://scripts/Door.gd" id="6_m7beu"]
 [ext_resource type="Texture2D" uid="uid://b5ssos7id88yo" path="res://images/shroomies.png" id="6_p7ia2"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uinix"]
 friction = 0.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sihrh"]
+atlas = ExtResource("3_p3rty")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_in07s"]
+atlas = ExtResource("3_p3rty")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63jvh"]
+atlas = ExtResource("3_p3rty")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bds76"]
+atlas = ExtResource("3_p3rty")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gaoxp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sihrh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_in07s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_63jvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bds76")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ok648"]
+size = Vector2(30, 64)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ibu3"]
 radius = 21.0
@@ -16,7 +61,7 @@ radius = 21.0
 [node name="Node2D" type="Node2D"]
 
 [node name="PlayerHolly(girl)" type="RigidBody2D" parent="."]
-position = Vector2(-64, 880)
+position = Vector2(649, -492)
 physics_material_override = SubResource("PhysicsMaterial_uinix")
 max_contacts_reported = 10
 contact_monitor = true
@@ -24,16 +69,20 @@ can_sleep = false
 lock_rotation = true
 script = ExtResource("2_67we3")
 
-[node name="Sprite" type="Sprite2D" parent="PlayerHolly(girl)"]
-texture_filter = 1
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("1_v4irv")
-
 [node name="Camera2D" type="Camera2D" parent="PlayerHolly(girl)"]
 current = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerHolly(girl)"]
 polygon = PackedVector2Array(-12, 40, 16, 40, 20, 38, 20, -28, -17, -28, -16, 38)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerHolly(girl)"]
+texture_filter = 1
+scale = Vector2(2.5, 2.5)
+frames = SubResource("SpriteFrames_gaoxp")
+animation = &"run"
+playing = true
 
 [node name="Backround" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.580392)
@@ -53,6 +102,13 @@ position = Vector2(928, -560)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("5_r23g5")
 offset = Vector2(-16, 0)
+script = ExtResource("6_m7beu")
+
+[node name="DoorArea" type="Area2D" parent="Door"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door/DoorArea"]
+position = Vector2(-16.3333, 0)
+shape = SubResource("RectangleShape2D_ok648")
 
 [node name="Shroomies" type="RigidBody2D" parent="."]
 position = Vector2(-96, 608)
