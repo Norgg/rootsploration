@@ -63,7 +63,7 @@ radius = 21.0
 [node name="Node2D" type="Node2D"]
 
 [node name="PlayerHolly(girl)" type="RigidBody2D" parent="."]
-position = Vector2(544, -512)
+position = Vector2(-50, 887)
 physics_material_override = SubResource("PhysicsMaterial_uinix")
 max_contacts_reported = 10
 contact_monitor = true
@@ -73,6 +73,7 @@ script = ExtResource("2_67we3")
 
 [node name="Camera2D" type="Camera2D" parent="PlayerHolly(girl)"]
 current = true
+process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
