@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtjhwtj1ke54d"]
+[gd_scene load_steps=9 format=3 uid="uid://dtjhwtj1ke54d"]
 
 [ext_resource type="Texture2D" uid="uid://fen82odamhey" path="res://images/player_holly(girl).png" id="1_v4irv"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_67we3"]
@@ -9,10 +9,6 @@
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uinix"]
 friction = 0.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7h2pm"]
-radius = 18.5
-height = 69.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6ibu3"]
 radius = 21.0
@@ -33,12 +29,11 @@ texture_filter = 1
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("1_v4irv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHolly(girl)"]
-position = Vector2(1.5, 5.5)
-shape = SubResource("CapsuleShape2D_7h2pm")
-
 [node name="Camera2D" type="Camera2D" parent="PlayerHolly(girl)"]
 current = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerHolly(girl)"]
+polygon = PackedVector2Array(-12, 40, 16, 40, 20, 38, 20, -28, -17, -28, -16, 38)
 
 [node name="Backround" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.580392)
