@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jqwcne5y6pnv"
-path="res://.godot/imported/backround0.png-4e7998a991532268bc44d2b32525119f.ctex"
+uid="uid://d1uyhf1j3kceg"
+path="res://.godot/imported/gold_shroomies.png-ed2dba2ff517b979f4d736fe6262794f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/backround0.png"
-dest_files=["res://.godot/imported/backround0.png-4e7998a991532268bc44d2b32525119f.ctex"]
+source_file="res://images/gold_shroomies.png"
+dest_files=["res://.godot/imported/gold_shroomies.png-ed2dba2ff517b979f4d736fe6262794f.ctex"]
 
 [params]
 
