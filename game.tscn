@@ -1,7 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dtjhwtj1ke54d"]
+[gd_scene load_steps=8 format=3 uid="uid://dtjhwtj1ke54d"]
 
 [ext_resource type="Texture2D" uid="uid://fen82odamhey" path="res://images/player_holly(girl).png" id="1_v4irv"]
 [ext_resource type="Script" path="res://scripts/Player.gd" id="2_67we3"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_uinix"]
+friction = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ofw00"]
+size = Vector2(35, 77)
 
 [sub_resource type="Gradient" id="Gradient_gikrv"]
 colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
@@ -11,7 +17,51 @@ gradient = SubResource("Gradient_gikrv")
 fill_from = Vector2(0.504587, 1)
 fill_to = Vector2(0.454128, 0)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ldtci"]
+size = Vector2(64, 64)
+
 [node name="Node2D" type="Node2D"]
+
+[node name="PlayerHolly(girl)" type="RigidBody2D" parent="."]
+position = Vector2(210, 79)
+physics_material_override = SubResource("PhysicsMaterial_uinix")
+can_sleep = false
+lock_rotation = true
+script = ExtResource("2_67we3")
+
+[node name="Sprite" type="Sprite2D" parent="PlayerHolly(girl)"]
+texture_filter = 1
+scale = Vector2(2.75, 2.75)
+texture = ExtResource("1_v4irv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHolly(girl)"]
+position = Vector2(1.5, 5.5)
+shape = SubResource("RectangleShape2D_ofw00")
+
+[node name="Camera2D" type="Camera2D" parent="PlayerHolly(girl)"]
+current = true
+
+[node name="BigPlatform1" type="Sprite2D" parent="."]
+position = Vector2(514, -166.873)
+scale = Vector2(37.5, 1.03522)
+texture = SubResource("GradientTexture2D_1gad0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BigPlatform1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BigPlatform1/StaticBody2D"]
+position = Vector2(-0.0711136, -1.48486)
+shape = SubResource("RectangleShape2D_ldtci")
+
+[node name="BigPlatform2" type="Sprite2D" parent="."]
+position = Vector2(3176, -166.873)
+scale = Vector2(37.5, 1.03522)
+texture = SubResource("GradientTexture2D_1gad0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BigPlatform2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BigPlatform2/StaticBody2D"]
+position = Vector2(-0.0711136, -1.48486)
+shape = SubResource("RectangleShape2D_ldtci")
 
 [node name="Platform1" type="Sprite2D" parent="."]
 position = Vector2(316, 183)
@@ -20,32 +70,79 @@ texture = SubResource("GradientTexture2D_1gad0")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Platform1"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform1/StaticBody2D"]
-visible = false
-polygon = PackedVector2Array(32, 27, 31.1, 27, -32, 31, -32, -32, 32, -32)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1/StaticBody2D"]
+position = Vector2(-0.0711098, -1.48486)
+shape = SubResource("RectangleShape2D_ldtci")
 
 [node name="Platform2" type="Sprite2D" parent="."]
-position = Vector2(787, 260)
+position = Vector2(1060, 306)
 scale = Vector2(8.08178, 0.445435)
 texture = SubResource("GradientTexture2D_1gad0")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Platform2"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Platform2/StaticBody2D"]
-visible = false
-polygon = PackedVector2Array(32, 27, 31.1, 27, -32, 31, -32, -32, 32, -32)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2/StaticBody2D"]
+position = Vector2(-0.0711098, -1.48486)
+shape = SubResource("RectangleShape2D_ldtci")
 
-[node name="PlayerHolly(girl)" type="RigidBody2D" parent="."]
-position = Vector2(210, 79)
-can_sleep = false
+[node name="Platform3" type="Sprite2D" parent="."]
+position = Vector2(554, 406)
+scale = Vector2(8.08178, 0.445435)
+texture = SubResource("GradientTexture2D_1gad0")
 
-[node name="Sprite" type="Sprite2D" parent="PlayerHolly(girl)"]
-texture_filter = 1
-scale = Vector2(2.75, 2.75)
-texture = ExtResource("1_v4irv")
-script = ExtResource("2_67we3")
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform3"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="PlayerHolly(girl)"]
-visible = false
-scale = Vector2(2.75, 2.75)
-polygon = PackedVector2Array(6.90909, -12, 8, -9.09091, 8, 14.1818, -7.27273, 14.1818, -7.27273, -9.45455, -5.81818, -12.3636, -4, -13.8182, 4.72727, -13.8182)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3/StaticBody2D"]
+position = Vector2(-0.0711098, -1.48486)
+shape = SubResource("RectangleShape2D_ldtci")
+
+[node name="Platform4" type="Sprite2D" parent="."]
+position = Vector2(911, 56)
+scale = Vector2(8.08178, 0.445435)
+texture = SubResource("GradientTexture2D_1gad0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform4"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4/StaticBody2D"]
+position = Vector2(-0.0711098, -1.48486)
+shape = SubResource("RectangleShape2D_ldtci")
+
+[node name="Platform6" type="Sprite2D" parent="."]
+position = Vector2(1673, 248)
+scale = Vector2(8.08178, 0.445435)
+texture = SubResource("GradientTexture2D_1gad0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform6"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform6/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ldtci")
+
+[node name="Platform7" type="Sprite2D" parent="."]
+position = Vector2(2337, 80)
+scale = Vector2(8.08178, 0.445435)
+texture = SubResource("GradientTexture2D_1gad0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform7"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform7/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ldtci")
+
+[node name="Platform8" type="Sprite2D" parent="."]
+position = Vector2(1665, -6)
+scale = Vector2(8.08178, 0.445435)
+texture = SubResource("GradientTexture2D_1gad0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform8"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform8/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ldtci")
+
+[node name="Platform9" type="Sprite2D" parent="."]
+position = Vector2(2247, 330)
+scale = Vector2(8.08178, 0.445435)
+texture = SubResource("GradientTexture2D_1gad0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Platform9"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform9/StaticBody2D"]
+shape = SubResource("RectangleShape2D_ldtci")
