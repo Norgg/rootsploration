@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4v2wddsrcvci"
-path="res://.godot/imported/door.png-e72a9147df1a5acfd78616a19e1745ae.ctex"
+uid="uid://b5ssos7id88yo"
+path="res://.godot/imported/shroomies.png-1f4b90210e0b6100d754c6d2e4b9328d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/door.png"
-dest_files=["res://.godot/imported/door.png-e72a9147df1a5acfd78616a19e1745ae.ctex"]
+source_file="res://images/shroomies.png"
+dest_files=["res://.godot/imported/shroomies.png-1f4b90210e0b6100d754c6d2e4b9328d.ctex"]
 
 [params]
 
