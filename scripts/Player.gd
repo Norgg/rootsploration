@@ -39,7 +39,7 @@ func hurt():
 func collided(body: Node):
     print('Bumped with: ', body.name)
     if body.name.begins_with('Shroomies'):
-        if body.position.y - position.y > 20:
+        if body.global_position.y - global_position.y > 20:
             body.queue_free()
             bounce = 500
         else:
