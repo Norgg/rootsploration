@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://e80aywcqxrhu"]
+
+[ext_resource type="Texture2D" uid="uid://dx56xf5a3j5ut" path="res://images/end_cutscene.png" id="1_1b1qp"]
+
+[node name="ending" type="Node2D"]
+
+[node name="EndCutscene" type="Sprite2D" parent="."]
+position = Vector2(576, 328)
+scale = Vector2(18, 10.25)
+texture = ExtResource("1_1b1qp")

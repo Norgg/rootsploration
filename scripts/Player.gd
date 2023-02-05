@@ -23,6 +23,7 @@ func _ready():
     start_pos = position
     last_checkpoint = start_pos
     connect('body_entered', collided)
+    connect('body_shape_entered', shape_collided)
     sprite = $AnimatedSprite2D
     star = $Star
 
@@ -51,6 +52,21 @@ func collided(body: Node):
         body.queue_free()
         star.show()
 
+
+func shape_collided(_body_rid: RID, body: Node, body_shape_index: int, _local_shape_index: int):
+    if body.name.begins_with('Angcake'):
+        if body_shape_index == 1:
+            hurt()
+        else:
+            # TODO: Play nom sound
+            var sound = (body as Angcake).sound
+            print(sound)
+            if !sound.playing:
+                print('nom')
+                sound.play()
+                sound.get_parent().remove_child(sound)
+                add_child(sound)
+            body.queue_free()
 
 func _integrate_forces(state: PhysicsDirectBodyState2D):
     if Input.is_action_just_pressed('respawn'):
