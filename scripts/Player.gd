@@ -18,8 +18,10 @@ var sprite: AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
     State.start_pos = position
-    State.last_checkpoint = State.start_pos
+    if State.teleport_to == Vector2.ZERO:
+        State.last_checkpoint = State.start_pos
     connect('body_entered', collided)
     connect('body_shape_entered', shape_collided)
     sprite = $AnimatedSprite2D
