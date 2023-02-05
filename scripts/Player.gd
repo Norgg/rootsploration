@@ -26,21 +26,27 @@ func _ready():
     star = $Star
 
 
+func hurt():
+    if protection > 0:
+        protection -= 1
+        if protection == 0:
+            star.hide()
+    else:
+        teleport_to = last_checkpoint
+
+
 func collided(body: Node):
     print('Bumped with: ', body.name)
     if body.name.begins_with('Shroomies'):
-        if protection > 0:
-            protection -= 1
-            if protection == 0:
-                star.hide()
+        if linear_velocity.y > 0:
+            body.queue_free()
         else:
-            teleport_to = last_checkpoint
+            hurt()
+
     elif body.name.begins_with('GoldShroomies'):
         protection = 1
         print('Showing star')
         star.show()
-    elif body.name.begins_with('Door'):
-        print('door!')
 
 
 func _integrate_forces(state: PhysicsDirectBodyState2D):
@@ -81,7 +87,7 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
 func check_grounded():
     var state := get_world_2d().direct_space_state
     var raycast_params := PhysicsRayQueryParameters2D.new()
-    for x in range(-20, 20, 5):
+    for x in range(-15, 15, 5):
         raycast_params.from = position + Vector2(x, 30)
         raycast_params.to = raycast_params.from + Vector2(0, 15)
         raycast_params.exclude = [get_rid()]

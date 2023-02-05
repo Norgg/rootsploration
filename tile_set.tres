@@ -1,38 +1,23 @@
-[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://dl05s284vy5pt"]
+[gd_resource type="TileSet" load_steps=4 format=3 uid="uid://c2qosri8u2vt1"]
 
 [ext_resource type="Texture2D" uid="uid://civ537ajw8t56" path="res://images/tilemap.png" id="1_n5dbf"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_jem1s"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_xnfau"]
 friction = 0.0
 bounce = 0.36
 absorbent = true
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2htmb"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_f0nw2"]
 texture = ExtResource("1_n5dbf")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 1:0/0 = 0
-1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-1:0/0/physics_layer_0/angular_velocity = 0.0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -2, -16, 16)
 2:0/0 = 0
-2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:0/0/physics_layer_0/angular_velocity = 0.0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 3:0/0 = 0
-3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-3:0/0/physics_layer_0/angular_velocity = 0.0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 2.5, 16, -16, 16, 16)
 4:0/0 = 0
-4:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-4:0/0/physics_layer_0/angular_velocity = 0.0
-4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
-physics_layer_0/physics_material = SubResource("PhysicsMaterial_jem1s")
-sources/3 = SubResource("TileSetAtlasSource_2htmb")
+physics_layer_0/physics_material = SubResource("PhysicsMaterial_xnfau")
+sources/3 = SubResource("TileSetAtlasSource_f0nw2")
