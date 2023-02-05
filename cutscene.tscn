@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=3 uid="uid://d4jknw3rc1idj"]
+
+[ext_resource type="Script" path="res://scripts/FallingCutscene.gd" id="1_4w2ny"]
+[ext_resource type="Texture2D" uid="uid://cn5ngb2gab6kb" path="res://images/cutseen1.png" id="1_pu03q"]
+[ext_resource type="Texture2D" uid="uid://dvsw6kj3uyrfl" path="res://images/player_holly(girl)_sheet.png" id="2_wbqyn"]
+[ext_resource type="FontFile" uid="uid://be0t0481aefkn" path="res://VT323-Regular.ttf" id="3_hbs1p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sihrh"]
+atlas = ExtResource("2_wbqyn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_557ql"]
+atlas = ExtResource("2_wbqyn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k82eg"]
+atlas = ExtResource("2_wbqyn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p2n7k"]
+atlas = ExtResource("2_wbqyn")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfs5y"]
+atlas = ExtResource("2_wbqyn")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1dm68"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sihrh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_557ql")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k82eg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p2n7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfs5y")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[node name="cutscene" type="Node2D"]
+script = ExtResource("1_4w2ny")
+
+[node name="Holly" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(592, -64)
+scale = Vector2(12, 12)
+frames = SubResource("SpriteFrames_1dm68")
+animation = &"fall"
+playing = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Holly"]
+offset_left = 10.6667
+offset_top = -8.0
+offset_right = 130.667
+offset_bottom = 24.0
+scale = Vector2(0.2, 0.2)
+theme_override_fonts/normal_font = ExtResource("3_hbs1p")
+theme_override_font_sizes/normal_font_size = 20
+text = "AAAAAAAAAAAH!"
+
+[node name="Cutseen1" type="Sprite2D" parent="."]
+z_index = -100
+position = Vector2(576, 328)
+scale = Vector2(26.1818, 14.9091)
+texture = ExtResource("1_pu03q")

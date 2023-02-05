@@ -12,16 +12,14 @@ var bounce = 0
 var protection := 0
 var star: Sprite2D
 
-var start_pos: Vector2
-var last_checkpoint: Vector2
-var teleport_to: Vector2
+
 
 var sprite: AnimatedSprite2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-    start_pos = position
-    last_checkpoint = start_pos
+    State.start_pos = position
+    State.last_checkpoint = State.start_pos
     connect('body_entered', collided)
     connect('body_shape_entered', shape_collided)
     sprite = $AnimatedSprite2D
@@ -34,7 +32,7 @@ func hurt():
         if protection == 0:
             star.hide()
     else:
-        teleport_to = last_checkpoint
+        State.teleport_to = State.last_checkpoint
 
 
 func collided(body: Node):
@@ -62,7 +60,6 @@ func shape_collided(_body_rid: RID, body: Node, body_shape_index: int, _local_sh
             var sound = (body as Angcake).sound
             print(sound)
             if !sound.playing:
-                print('nom')
                 sound.play()
                 sound.get_parent().remove_child(sound)
                 add_child(sound)
@@ -70,17 +67,17 @@ func shape_collided(_body_rid: RID, body: Node, body_shape_index: int, _local_sh
 
 func _integrate_forces(state: PhysicsDirectBodyState2D):
     if Input.is_action_just_pressed('respawn'):
-        teleport_to = last_checkpoint
+        State.teleport_to = State.last_checkpoint
 
     if position.y > 10000:
-        teleport_to = last_checkpoint
+        State.teleport_to = State.last_checkpoint
 
-    if teleport_to != Vector2.ZERO:
+    if State.teleport_to != Vector2.ZERO:
         print('Teleporting')
-        state.transform.origin = teleport_to
+        state.transform.origin = State.teleport_to
         state.linear_velocity = Vector2()
         state.angular_velocity = 0
-        teleport_to = Vector2.ZERO
+        State.teleport_to = Vector2.ZERO
 
     var move_dir = Vector2()
     if Input.is_action_pressed('right'):
@@ -88,7 +85,9 @@ func _integrate_forces(state: PhysicsDirectBodyState2D):
     elif Input.is_action_pressed('left'):
         move_dir.x -= 1
     
-    if move_dir.x != 0:
+    if linear_velocity.y > 600:
+        sprite.animation = 'fall'
+    elif move_dir.x != 0:
         sprite.animation = 'run'
         if move_dir.x > 0:
             sprite.flip_h = false
