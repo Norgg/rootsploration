@@ -10,7 +10,7 @@ func _ready():
 func collided(body: Node):
     if body.name.begins_with('Player'):
         if end:
-            pass
+            get_tree().change_scene_to_file("res://ending.tscn")
         else:
             var player := body as Player
             player.teleport_to = teleport_to

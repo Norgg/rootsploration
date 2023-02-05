@@ -76,7 +76,7 @@ size = Vector2(7.16667, 4.16666)
 [node name="Node2D" type="Node2D"]
 
 [node name="PlayerHolly(girl)" type="RigidBody2D" parent="."]
-position = Vector2(5984, 208)
+position = Vector2(6560, -1296)
 physics_material_override = SubResource("PhysicsMaterial_uinix")
 max_contacts_reported = 10
 contact_monitor = true
@@ -485,6 +485,7 @@ texture = ExtResource("5_r23g5")
 offset = Vector2(-16, 0)
 script = ExtResource("6_m7beu")
 teleport_to = Vector2(1312, 4224)
+end = true
 
 [node name="DoorArea" type="Area2D" parent="Level3/Door2"]
 
