@@ -88,7 +88,7 @@ size = Vector2(7.16667, 4.16666)
 [node name="Node2D" type="Node2D"]
 
 [node name="PlayerHolly(girl)" type="RigidBody2D" parent="."]
-position = Vector2(655.296, -502.03)
+position = Vector2(-64, 880)
 physics_material_override = SubResource("PhysicsMaterial_uinix")
 max_contacts_reported = 10
 contact_monitor = true

@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://bifpd31h5pejm"]
+
+[ext_resource type="Texture2D" uid="uid://damfcwlaurlup" path="res://images/start.png" id="1_3uvo3"]
+[ext_resource type="Script" path="res://scripts/Start.gd" id="1_24cw4"]
+[ext_resource type="FontFile" uid="uid://be0t0481aefkn" path="res://VT323-Regular.ttf" id="2_ar12c"]
+
+[node name="start" type="Node2D"]
+script = ExtResource("1_24cw4")
+
+[node name="Start" type="Sprite2D" parent="."]
+position = Vector2(329, 329)
+scale = Vector2(1.48636, 1.48636)
+texture = ExtResource("1_3uvo3")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+modulate = Color(0.160784, 0.0745098, 0.00392157, 1)
+offset_left = 720.0
+offset_top = 96.0
+offset_right = 1136.0
+offset_bottom = 176.0
+theme_override_fonts/normal_font = ExtResource("2_ar12c")
+theme_override_font_sizes/normal_font_size = 64
+text = "Rootsploration"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="."]
+modulate = Color(0.160784, 0.0745098, 0.00392157, 1)
+offset_left = 752.0
+offset_top = 176.0
+offset_right = 1168.0
+offset_bottom = 608.0
+theme_override_fonts/normal_font = ExtResource("2_ar12c")
+theme_override_font_sizes/normal_font_size = 28
+text = "By Issy and Norgg
+
+Keyboard:
+A/D or left/right: Move
+R: Respawn
+Space: Jump
+
+Gamepad:
+DPad/Left Stick: Move
+A: Jump
+Back: Respawn
+
+Press Start/Enter to begin"
