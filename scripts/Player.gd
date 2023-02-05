@@ -7,6 +7,7 @@ const jump_impulse := 800
 var grounded := 0.0
 const control_smoothing := 0.5
 const air_control := 0.02
+var bounce = 0
 
 var protection := 0
 var star: Sprite2D
@@ -38,14 +39,16 @@ func hurt():
 func collided(body: Node):
     print('Bumped with: ', body.name)
     if body.name.begins_with('Shroomies'):
-        if linear_velocity.y > 0:
+        if body.position.y - position.y > 20:
             body.queue_free()
+            bounce = 500
         else:
             hurt()
 
     elif body.name.begins_with('GoldShroomies'):
         protection = 1
         print('Showing star')
+        body.queue_free()
         star.show()
 
 
@@ -109,4 +112,6 @@ func _process(delta):
         if linear_velocity.y < 0:
             apply_central_impulse(Vector2(0, -linear_velocity.y * mass / 2))
 
-    
+    if bounce != 0:
+        apply_central_impulse(Vector2(0, -bounce))
+        bounce = 0
