@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://d4jknw3rc1idj"]
+[gd_scene load_steps=12 format=3 uid="uid://d4jknw3rc1idj"]
 
 [ext_resource type="Script" path="res://scripts/FallingCutscene.gd" id="1_4w2ny"]
 [ext_resource type="Texture2D" uid="uid://cn5ngb2gab6kb" path="res://images/cutseen1.png" id="1_pu03q"]
 [ext_resource type="Texture2D" uid="uid://dvsw6kj3uyrfl" path="res://images/player_holly(girl)_sheet.png" id="2_wbqyn"]
 [ext_resource type="FontFile" uid="uid://be0t0481aefkn" path="res://VT323-Regular.ttf" id="3_hbs1p"]
+[ext_resource type="AudioStream" uid="uid://cpe0ngkic2u6b" path="res://sounds/aaaaaaaaa.ogg" id="5_20iol"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sihrh"]
 atlas = ExtResource("2_wbqyn")
@@ -84,3 +85,7 @@ z_index = -100
 position = Vector2(576, 328)
 scale = Vector2(26.1818, 14.9091)
 texture = ExtResource("1_pu03q")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_20iol")
+autoplay = true

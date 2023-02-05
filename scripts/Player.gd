@@ -123,8 +123,11 @@ func _process(delta):
     grounded = max(grounded - delta, 0)
 
     if Input.is_action_just_pressed('jump') and grounded > 0:
+        if !$JumpSound.playing:
+            $JumpSound.pitch_scale = 1 + (randf() - 0.5) * 0.4
+            $JumpSound.play()
         apply_central_impulse(Vector2(0, -jump_impulse * mass))
-    
+
     elif Input.is_action_just_released('jump'):
         if linear_velocity.y < 0:
             apply_central_impulse(Vector2(0, -linear_velocity.y * mass / 2))
