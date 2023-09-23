@@ -46,6 +46,13 @@ func collided(body: Node):
         else:
             hurt()
 
+    if body.name.begins_with('Brob'):
+        if body.global_position.y - global_position.y > 20 or body.global_position.x - global_position.x < 0:
+            body.queue_free()
+            bounce = 500
+        else:
+            hurt()
+
     elif body.name.begins_with('GoldShroomies'):
         protection = 1
         print('Showing star')
