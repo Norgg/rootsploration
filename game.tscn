@@ -5,9 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://dvsw6kj3uyrfl" path="res://images/player_holly(girl)_sheet.png" id="3_p3rty"]
 [ext_resource type="AudioStream" uid="uid://cmd50aft1yr2q" path="res://sounds/whoosh.ogg" id="4_cfs8e"]
 [ext_resource type="TileSet" uid="uid://c2qosri8u2vt1" path="res://tile_set.tres" id="4_myshu"]
-[ext_resource type="Texture2D" uid="uid://bfotgrgbb33ss" path="res://images/backround0.png" id="4_pyr7p"]
-[ext_resource type="Texture2D" uid="uid://bh2muxaud76rq" path="res://images/backround1.png" id="4_rlqre"]
-[ext_resource type="Texture2D" uid="uid://bpn64enrqvmrr" path="res://images/door.png" id="5_r23g5"]
+[ext_resource type="Texture2D" uid="uid://jqwcne5y6pnv" path="res://images/backround0.png" id="4_pyr7p"]
+[ext_resource type="Texture2D" uid="uid://bmcqc656vtx05" path="res://images/backround1.png" id="4_rlqre"]
+[ext_resource type="Texture2D" uid="uid://b7kx2a5plmjbr" path="res://images/door.png" id="5_r23g5"]
 [ext_resource type="Script" path="res://scripts/Door.gd" id="6_m7beu"]
 [ext_resource type="Texture2D" uid="uid://b5ssos7id88yo" path="res://images/shroomies.png" id="6_p7ia2"]
 [ext_resource type="Texture2D" uid="uid://d1uyhf1j3kceg" path="res://images/gold_shroomies.png" id="8_phy4e"]
@@ -98,7 +98,6 @@ lock_rotation = true
 script = ExtResource("2_67we3")
 
 [node name="Camera2D" type="Camera2D" parent="PlayerHolly(girl)"]
-current = true
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
@@ -109,8 +108,7 @@ polygon = PackedVector2Array(-12, 40, 16, 40, 20, 38, 20, -28, -17, -28, -16, 38
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerHolly(girl)"]
 texture_filter = 1
 scale = Vector2(2.5, 2.5)
-frames = SubResource("SpriteFrames_gaoxp")
-playing = true
+sprite_frames = SubResource("SpriteFrames_gaoxp")
 
 [node name="Star" type="Sprite2D" parent="PlayerHolly(girl)"]
 visible = false

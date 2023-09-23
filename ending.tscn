@@ -49,8 +49,7 @@ texture = ExtResource("1_1b1qp")
 [node name="Mum" type="AnimatedSprite2D" parent="."]
 position = Vector2(928, 464)
 scale = Vector2(12, 12)
-frames = SubResource("SpriteFrames_vkent")
-playing = true
+sprite_frames = SubResource("SpriteFrames_vkent")
 
 [node name="PlayerAcre(boy)" type="Sprite2D" parent="."]
 position = Vector2(336, 544)
