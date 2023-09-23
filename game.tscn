@@ -98,7 +98,6 @@ lock_rotation = true
 script = ExtResource("2_67we3")
 
 [node name="Camera2D" type="Camera2D" parent="PlayerHolly(girl)"]
-current = true
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
@@ -109,8 +108,7 @@ polygon = PackedVector2Array(-12, 40, 16, 40, 20, 38, 20, -28, -17, -28, -16, 38
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="PlayerHolly(girl)"]
 texture_filter = 1
 scale = Vector2(2.5, 2.5)
-frames = SubResource("SpriteFrames_gaoxp")
-playing = true
+sprite_frames = SubResource("SpriteFrames_gaoxp")
 
 [node name="Star" type="Sprite2D" parent="PlayerHolly(girl)"]
 visible = false

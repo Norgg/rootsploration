@@ -2,13 +2,27 @@ extends Node2D
 
 var timer = 3
 
-# Called when the node enters the scene tree for the first time.
+var holly
+var acre
+var mum
+var elapsed_time := 0.0
+
 func _ready():
-    pass # Replace with function body.
+    acre = find_child('PlayerAcre(boy)')
+    holly = find_child('PlayerHolly(girl)')
+    mum = find_child('Mum')
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+    elapsed_time += delta
+    if fmod(elapsed_time, 0.5) > 0.25: 
+        acre.position.y = 544
+        holly.position.y = 524
+        mum.position.y = 444
+    else:
+        acre.position.y = 524
+        holly.position.y = 544
+        mum.position.y = 464
     timer -= delta
     if timer < 0:
         $RestartText.show()

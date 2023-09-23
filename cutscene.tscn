@@ -66,9 +66,8 @@ script = ExtResource("1_4w2ny")
 texture_filter = 1
 position = Vector2(592, -64)
 scale = Vector2(12, 12)
-frames = SubResource("SpriteFrames_1dm68")
+sprite_frames = SubResource("SpriteFrames_1dm68")
 animation = &"fall"
-playing = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Holly"]
 offset_left = 10.6667
